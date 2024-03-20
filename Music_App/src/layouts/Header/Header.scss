@@ -1,0 +1,198 @@
+.hearContainer {
+    width: 100vw;
+    height: 60px;
+    background-color: rgba($color: #D27B7B, $alpha: 0.2);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+
+    .Container {
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .LOGOContainer {
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+        }
+
+        .MenuContainer {
+            width: 250px;
+            display: flex;
+            justify-content: space-between;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 17px;
+            color: #D27B7B;
+
+            .vistedSite {
+                color: #A35C5C;
+                font-weight: bolder;
+            }
+
+            .musicHall {
+                position: relative;
+                
+                span::after {
+                    content: " ";
+                    display: inline-block;
+                    width: 8px;
+                    height: 8px;
+                    text-align: end;
+                    border-right: 2px solid #A35C5C;
+                    border-bottom: 2px solid #A35C5C;
+                    transform: rotate(45deg);
+                    position: relative;
+                    margin-left: 5px;
+                    margin-bottom: 3px;
+                    transition:all 0.5s ease-in-out;
+                }
+
+                .secondMenu {
+                    display: none;
+                    width: 100px;
+                    height: 160px;
+                    position: absolute;
+                    background-color: #E4A0A0;
+                    color: #FCDADA;
+                    font-weight: normal;
+                    padding: 0;
+                    margin: 0;
+                    
+                    a {
+                        display: block;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+
+                        &:hover {
+                            color: #A35C5C;
+                        }
+                    }
+                }
+
+                &:hover {
+                    &>span::after {
+                        transform: rotate(225deg);
+                        margin-bottom: 0px;
+                    }
+
+                    .secondMenu {
+                        display: block;
+                        
+                    }
+                }
+            }
+
+            .musicHall,
+            .myMusic {
+                cursor: pointer;
+                height: 60px;
+                line-height: 60px;
+
+                &:hover {
+                    color: #A35C5C;
+                }
+            }
+
+
+
+
+
+        }
+
+        .searchContainer {
+            width: 280px;
+            display: flex;
+            border-radius: 15px;
+
+            .searchInput {
+                width: 250px;
+                height: 30px;
+                background-color: rgba($color: #D27B7B, $alpha: 0.25);
+                border: 0;
+                border-radius: 15px 0 0 15px;
+                outline: #D27B7B;
+                vertical-align: bottom;
+                padding: 10px;
+            }
+
+            .search {
+                display: flex;
+                width: 30px;
+                height: 30px;
+                border-radius: 0px 15px 15px 0px;
+
+                background-color: rgba($color: #D27B7B, $alpha: 0.25);
+
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                .searcIcon {
+                    cursor: pointer;
+
+                    display: flex;
+                    justify-content: center;
+
+
+                }
+
+                &:hover {
+                    background-color: rgba($color: #A35C5C, $alpha: 0.25);
+
+                    svg path {
+                        fill: #A35C5C;
+                    }
+                }
+
+            }
+
+        }
+
+        .userContainer {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            // background-color: #E4A0A0;
+            background-image: url('/src/assets/user.svg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            &:hover{
+                background-color: rgba($color: #FCDADA, $alpha: 0.1);
+                
+            }
+        }
+        .userContainer_Logined{
+            display: none;
+        }
+    }
+}
+
+.scrolled{
+    background-color: rgba($color: #D27B7B, $alpha: 1);
+    .Container{
+        .MenuContainer{
+            color:#fff
+        }
+        .searchContainer{
+            background-color: rgba($color: #fff, $alpha: 0.25);
+            .search:hover{
+                background-color: rgba($color: #FCDADA, $alpha: 0.1);
+            }
+
+        }
+        // .search {border-radius: 0px 15px 15px 0px;}
+        .userContainer:hover {
+            background-color: rgba($color: #FCDADA, $alpha: 0.1);
+
+        }
+    }
+    
+}
