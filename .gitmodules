@@ -1,0 +1,4 @@
+[submodule "musicplayer"]
+	path = musicplayer
+	url = https://github.com/Freya-tian/musicplayer.git
+	branch = frontend
