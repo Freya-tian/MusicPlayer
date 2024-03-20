@@ -2,3 +2,11 @@
 	path = musicplayer
 	url = https://github.com/Freya-tian/musicplayer.git
 	branch = frontend
+[submodule "frotend"]
+	path = frotend
+	url = https://github.com/Freya-tian/musicplayer.git
+	branch = frontend
+[submodule "server"]
+	path = server
+	url = https://github.com/Freya-tian/musicplayer.git
+	branch = server
