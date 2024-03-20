@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
+# vite + React 开发音乐播放器 
+## 本地开发阶段解决跨域问题：
+在vite.config.ts 添加代码：
 ```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+export default defineConfig({
+  plugins: [react()],//原有的设置
+  server:{
+    host:'localhost',
+    port:5173,
+    open:false,
+    proxy:{
+      '/api':    {
+      target: 'http://localhost:3000',
+      changeOrigin: true,
+      rewrite: (path)=>path.replace(/^\/api/,'')
+      }
+    }  
+  }
+})
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+*************
+
+## 在ts文件中引入js模块：
+1. 创建xxx.d.ts vite 自带vite-env.d.ts 所以我在这里添加了
+    declare module '*/index.js'{ //这里引入的是/service/index.js
+    export const recommendList:sring|object //将index.js中暴露的recommondList 设置返回类型
+    }
+2. 网上查到还有一种方式：
+使用require引入：
+    require('./service/index.js')
+但是我使用报错
