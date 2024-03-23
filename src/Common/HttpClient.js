@@ -9,7 +9,9 @@ export class HttpClient  {
 		// const token = this.getToken()
 		// Добавляем хедеры
 		let headers = {
-			'Content-Type': 'application/json',
+			// 'Content-Type': 'application/json',
+			// 'application/json'
+			// 'Charset':'utf-8'
 			// Authorization: token ? `Bearer ${token}` : '',
 		}
 		if (options.headers) {

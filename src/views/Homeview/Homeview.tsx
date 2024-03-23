@@ -1,29 +1,40 @@
 import Homeblock from '../../Compoents/Homeblock/Homeblock'
 import './Homeview.scss'
 import album from '../../assets/album.jpg'
-import { useEffect } from 'react'
-import {recommendList} from '../../Services/index.js'
-
+import { useEffect, useState } from 'react'
+import { recommendList } from '../../Services/index.js'
+// import LayoutDefault from '../../layouts/LayoutDefaule.js'
+// import { BlockID } from '../../Compoents/Homeblock/Homeblock'
+export interface ReconmendListResponse {
+    recommendlist: { Introduction: string, MusicList_ID: number, Play_times: number, image: string, list_Name: string }[],
+    types: { Tag_ID: number, Tag_Name: string, group: string }[]
+}
 const Homeview = () => {
-    // const [homedata,sethomedata] = useState({
-    //     hotCategory:[],
-    //     hotRecommend:[],
-    //     newLanList:[],
-    //     newSonglist:[],
-    // })
-    useEffect(()=>{
+    const [list, setrecommendlist] = useState<ReconmendListResponse>();
+    // const [bolckid] = useState(1)
+    // const [types,settypes] = useState<{Tag_ID:number,Tag_Name:string,group:string}[]>();
+
+    useEffect(() => {
         async function getdata() {
-            const data = await  recommendList.fetchRecommendList()
-            console.log(data);
+            await recommendList.fetchRecommendList().then((res: ReconmendListResponse) => {
+                const result = res as ReconmendListResponse
+                setrecommendlist({
+                    recommendlist: [...result.recommendlist],
+                    types: [...result.types]
+                })
+
+            })
+
         }
-      
         getdata()
-      
-    },[])
+
+    }, [])
+
 
     return (
-        <main className="MainContainer">
-            
+        
+            <main className="MainContainer">
+
                 <div className="BannerContainer">
                     <div className="bgimgContainer">
                         <img className='bannerBg' src={album} alt="" />
@@ -41,9 +52,11 @@ const Homeview = () => {
                     </div>
 
                 </div>
-                <Homeblock></Homeblock>
-                <Homeblock></Homeblock>
-        </main>
+                <Homeblock {...list} id={1} ></Homeblock>
+                <Homeblock id={2}></Homeblock>
+            </main>
+        
+
     )
 }
 export default Homeview

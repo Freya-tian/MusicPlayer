@@ -2,6 +2,7 @@ import './Header.scss'
 import logo from '/logo.svg'
 import search from '../../assets/search.svg'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 /**
  * 网页菜单栏
  * - logo
@@ -48,9 +49,9 @@ return (
                     <img className='searcIcon' src={search} width="20" height='20'></img>
                 </div>
             </div>
-            <div className="userContainer">
-                <a ><span className="loginIcon"></span></a>
-            </div>
+            <Link to ='/Login' className="userContainer">
+                <span className="loginIcon"></span>
+            </Link>
             <div className="userContainer_Logined">
                 <div className="messageUser">
                     <a><span className="messageaIcon"></span></a>

@@ -1,0 +1,67 @@
+.RegisterContainer {
+    width: 50%;
+    height: 80%;
+    background: #fff;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        width: 80%;
+        height: 70%;
+        display: grid;
+        grid-template-rows: repeat(4, 1fr) 2fr;
+        align-items: center;
+        justify-items: center;
+
+        .block {
+            width:90%;
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            align-items: center;
+            input {
+                width: 400px;
+                height: 50px;
+                font-size: 15px;
+
+                background: #FFEEEE;
+                border: 0;
+                border-radius: 10px;
+                padding: 10px;
+                outline: #FFEEEE;
+
+            }
+            input[type="file"] {
+                width: 300px;
+                height: 50px;
+                font-size: 15px;
+
+                background: #FFf;
+                border: 0;
+                border-radius: 10px;
+                padding: 10px;
+                outline: #FFEEEE;
+
+            }
+            .exp{
+                color: red;
+            }
+        }
+        .buttoncontainer{
+            width: 200px;
+            height: 50px;
+            background-color:  rgba($color: #D27B7B, $alpha: 0.4);;
+            transition: all 0.5s ease-in-out;
+            border-radius: 20px;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+            &:hover{
+            background-color:  rgba($color: #D27B7B, $alpha: 0.7);;
+
+            }
+        }
+
+    }
+}

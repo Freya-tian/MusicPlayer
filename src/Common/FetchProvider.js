@@ -5,13 +5,19 @@ export  class FetchProvider{
         return '?' + queryParams.toString()
     }
     request(options){
-        const body = options.data?JSON.stringify(options.data) : null;
-        console.log(options.baseURL);
-        return fetch(options.path+this.conputedQueryParams(options.query),
+        let body=null
+        if(options.path==='/user/register'){
+            body = options.data            
+        }else{
+            body = options.data?JSON.stringify(options.data) : null; 
+        }       
         
+        
+        return fetch(options.baseURL+options.path+this.conputedQueryParams(options.query),       
         {
             headers:options.headers,
-            body,method:options.method
+            body,
+            method:options.method
         }).then((response)=>{
             if(!response.ok) return Promise.reject(response)
             return response
@@ -28,6 +34,7 @@ export  class FetchProvider{
         return this.request({path,method:'GET',...requestOptions})
     }
     post(path,requestOptions){
+        
         return this.request({path,method:'POST',...requestOptions})
     }
     put(path,requestOptions){

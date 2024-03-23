@@ -1,0 +1,26 @@
+.UserContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(210, 123, 123, 0.16);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logocontainer,.logocontainerLast{
+        width: 200px;
+        height: 200px;
+        background-image:url('../../../public/logo.svg') ;
+        position: absolute;
+       
+    }
+    .logocontainer{
+        top: 14%;
+        left: 12%;
+        z-index: 1;
+    }
+    .logocontainerLast{
+        top: 67%;
+        left: 75%;
+        z-index: 4;
+    }
+}
