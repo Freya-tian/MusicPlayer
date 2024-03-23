@@ -18,30 +18,30 @@ fs.readFileSync(path.join(__dirname, '../keys/pem/rsa_private_key.pem'));
 JWT 由三部分组成：
 1. Header
         JSON对象，描述JWT 的元数据
-        {
-            alg:'HS256', -加密算法缩写，默认为HNAC SH256
-            typ:'JWT'    - JWT 为默认值
-        }
+       ```js {
+            alg:'HS256', //-加密算法缩写，默认为HNAC SH256
+            typ:'JWT'    //- JWT 为默认值
+        ```}
         将Header json使用base64url 转化为字符串
 2. Payload
         携带数据的json对象，JWT规定了7个官方字段：
-            > iss: 签发人
-            > exp : 过期时间
-            > sub : 主题
-            > aud: 受众
-            > nbf: 生效时间
-            > iat: 签发时间
-            > jti: 编号
-        jwt默认不加密，不要将秘密信息放于此处
-        json使用base64url 转化为字符串
+            - iss: 签发人
+            - exp : 过期时间
+            - sub : 主题
+            - aud: 受众
+            - nbf: 生效时间
+            - iat: 签发时间
+            - jti: 编号
+        - jwt默认不加密，不要将秘密信息放于此处
+        - json使用base64url 转化为字符串
 3. Signature
         对前面两部分的签名，防止数据篡改
-         > 指定一个密钥，只有服务器知道
-         > 使用header中指定签名算法按一下公式签名
+         - 指定一个密钥，只有服务器知道
+         - 使用header中指定签名算法按一下公式签名
             ```js
             HMACSH256(baseUrlEncode(header)+'.'+baseUrlEncode(payload),secret)
             ```
-         > 算出签名后将header，payload，signature 三部分拼接成字符串，每部分之间用点（.)分割，返回给用户
+         - 算出签名后将header，payload，signature 三部分拼接成字符串，每部分之间用点（.)分割，返回给用户
 ```js
 const jwt = require('jsonwebtoken')
 token = jwt.sign({ User_ID, Email }, PRIVATE_KEY, {
@@ -61,8 +61,8 @@ fs.unlink(req.file.path, (err) => {
 ```
 
 ## multer处理接收到的文件：
-前端通过form上传是须加 enctype = 'multipart/form-data';
-通过fetch请求上传时，上传的数据类型为formData,且请求头无需加任何‘content-type’
+- 前端通过form上传是须加 enctype = 'multipart/form-data';
+- 通过fetch请求上传时，上传的数据类型为formData,且请求头无需加任何‘content-type’
 ```js
 const multer = require('multer')
 
