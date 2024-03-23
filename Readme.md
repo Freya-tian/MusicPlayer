@@ -24,18 +24,18 @@ JWT 由三部分组成：
         ```}
         将Header json使用base64url 转化为字符串
 2. Payload
-        携带数据的json对象，JWT规定了7个官方字段：
-            - iss: 签发人
-            - exp : 过期时间
-            - sub : 主题
-            - aud: 受众
-            - nbf: 生效时间
-            - iat: 签发时间
-            - jti: 编号
-        - jwt默认不加密，不要将秘密信息放于此处
-        - json使用base64url 转化为字符串
+    - 携带数据的json对象，JWT规定了7个官方字段
+        - iss: 签发人
+        - exp : 过期时间
+        - sub : 主题
+        - aud: 受众
+        - nbf: 生效时间
+        - iat: 签发时间
+        - jti: 编号
+    - jwt默认不加密，不要将秘密信息放于此处
+    - json使用base64url 转化为字符串
 3. Signature
-        对前面两部分的签名，防止数据篡改
+    - 对前面两部分的签名，防止数据篡改
          - 指定一个密钥，只有服务器知道
          - 使用header中指定签名算法按一下公式签名
             ```js
