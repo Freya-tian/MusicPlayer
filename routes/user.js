@@ -9,6 +9,7 @@ const password = require('../Passwordhandler/passwordhandler')
 const jwt = require('jsonwebtoken')
 
 let PRIVATE_KEY = fs.readFileSync(path.join(__dirname, '../keys/pem/rsa_private_key.pem'));
+let PUBLIC_KEY = fs.readFileSync(path.join(__dirname, '../keys/pem/rsa_public_key.pem'));
 const findUser = async (email = null) => {
     const sql = "SELECT * FROM musicapp_schema.users where   Email = ?"
     const result = await db.operationDatabase(sql, email)
@@ -102,7 +103,7 @@ user.post('/login', (req, res) => {
             })
         } else {
             
-            const { User_ID, Email,User_Name ,Password} = data[0]
+            const { User_ID, Email,User_Name ,Password,Avatar} = data[0]
             const passwordmd5 = password.passwordhandler(datas.password)
             let token = ''
             console.log(passwordmd5);
@@ -116,9 +117,13 @@ user.post('/login', (req, res) => {
 
                 })
                 res.send({
-                    status: 200,
-                                         
-                        token: token
+                    status: 200,                                         
+                    token: token,
+                    data:{
+                        userid:User_ID,
+                        name:User_Name,
+                        avatar:Avatar
+                    }
                    
                 })
             } else {
@@ -132,14 +137,31 @@ user.post('/login', (req, res) => {
     })
 })
 
+
+/**
+ * 此处需解析url中携带的token，并通过解析出的token查询user并返回
+ * const token = authorization.replace('Bearer ', '');
+ *  const result =jwt.verify(token,PUBLIC_KEY,{
+                algorithms:['RS256']
+    })
+    ctx.user =result
+ */
 user.get('/userinfo',(req, res) => {
-    findUser(datas.email).then((data) => {
-        const { User_ID, Email, User_Name ,Password} = data[0]
+    console.log(req.headers.authorization);
+    const token = req.headers.authorization.replace('Bearer ', '');
+    const result =jwt.verify(token,PUBLIC_KEY,{
+        algorithms:['RS256']
+})
+
+    findUser(result.Email).then((data) => {
+        const { User_ID, Email, User_Name ,Avatar} = data[0]
         res.send({
             
-                user_id: User_ID,
-                user_namae: User_Name,
-                email: Email,
+            data:{
+                userid:User_ID,
+                name:User_Name,
+                avatar:Avatar
+            }
                
             
         })

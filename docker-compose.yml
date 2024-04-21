@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: "musicapp_schema"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "Tian9478586"
+    volumes:
+      - /Database:/docker-entrypoint-initdb.d
+
+
+  server:
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    environment:
+      DB_HOST: database
+      DB_USER: "root"
+      DB_PASSWORD: "Tian9478586"
+      DB_DATABASE: "musicapp_schema"
+

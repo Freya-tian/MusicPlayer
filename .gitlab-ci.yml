@@ -1,0 +1,26 @@
+image: gitlab/dind
+services:
+  - docker:dind
+stages:
+ - build
+ - Run
+ - test
+
+build-job: 
+  stage: build
+  script:
+   - rm -rf music-server
+   - git clone https://gitlab.com/Freya-tian/music-server.git
+   - cd music-server   
+   - docker-compose build 
+
+Run-job:
+  stage: Run
+  script:
+   - docker-compose up -d
+
+test-job1:
+  stage: test
+  image: node:latest
+  script:
+    - npm test

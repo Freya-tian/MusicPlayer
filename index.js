@@ -3,6 +3,8 @@ const db = require('./Database/connect')
 const app = express()
 const singer  = require('./routes/singer')
 const rank = require('./routes/rankList')
+const historyList = require('./routes/historyList')
+
 const recommend = require('./routes/recommend')
 const expressSwagger  = require('express-swagger-generator')(app);
 const user = require('./routes/user')
@@ -28,6 +30,7 @@ app.use('/singer',singer )
 app.use('/rank',rank )
 app.use('/recommend',recommend )
 app.use('/user',user )
+app.use('/historyList',historyList )
 let options = {
     swaggerDefinition: {
         info: {
