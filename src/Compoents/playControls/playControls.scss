@@ -1,0 +1,22 @@
+.playerControls{
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    align-items: center;
+    .lastControl,.stopcontrol,.playcontrol,.nextControl{
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: #D27B7B;
+        cursor: pointer;
+        transition:all 0.2s ease-in-out;
+        img{
+            width: 48px;
+            height: 48px; 
+        }
+        &:hover{
+            background-color: #E4A0A0;
+        }
+    }
+   
+}

@@ -11,9 +11,10 @@ export  class FetchProvider{
         }else{
             body = options.data?JSON.stringify(options.data) : null; 
         }       
+       console.log(options.baseURL+options.path);
         
-        
-        return fetch(options.baseURL+options.path+this.conputedQueryParams(options.query),       
+        return fetch(options.baseURL+options.path+this.conputedQueryParams(options.query),    
+       
         {
             headers:options.headers,
             body,
@@ -31,9 +32,11 @@ export  class FetchProvider{
     }
 
     get(path,requestOptions){
+       
         return this.request({path,method:'GET',...requestOptions})
     }
     post(path,requestOptions){
+        console.log(path);
         
         return this.request({path,method:'POST',...requestOptions})
     }

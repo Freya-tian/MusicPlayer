@@ -7,7 +7,9 @@ const Loginview = lazy(() => import("../views/Loginview/Loginiew.tsx"))
 
 const Homeview = lazy(() => import("../views/Homeview/Homeview"))
 const Registerview = lazy(() => import("../views/Registerview/Registerview.tsx"))
-
+const Playing = lazy(() => import("../views/Playingview/Playing.tsx"))
+const MyMuic = lazy(()=>import('../views/MyMusic/MyMusic.tsx'))
+const Search = lazy(()=>import('../views/Search/Search.tsx'))
 
 interface Route {
     path?: string,
@@ -23,6 +25,18 @@ export const routes: Route[] = [
             {
                 path: '/',
                 element: <Homeview />,
+            },{
+                path: '/Playing',
+                element: <Playing />
+    
+    
+            },
+           {
+                path: '/My',
+                element: <MyMuic />  
+            },{
+                path:'/search',
+                element:<Search/>
             }
         ]
     },
@@ -37,7 +51,9 @@ export const routes: Route[] = [
             element: <Registerview />
 
 
-        }]
+        },
+       
+    ]
 
     },
 ]

@@ -7,19 +7,13 @@ import { store } from './store/store.tsx';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <Suspense fallback={''}>
           <App></App>
-
         </Suspense>
-
       </BrowserRouter>
-
-
-
-
     </Provider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )

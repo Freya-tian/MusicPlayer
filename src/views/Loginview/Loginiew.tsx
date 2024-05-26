@@ -1,15 +1,18 @@
 import './Loginview.scss'
-
+import { useNavigate } from 'react-router-dom';
 import { AppDispatch ,RootState} from '../../store/store.js';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom'
-import { ChangeEvent, useRef, useState } from 'react'
-import {login,getMe} from '../../store/Userstore/Userstore.js'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import {fetchlogin} from '../../store/Userstore/Userstore.js'
+
+
 const Loginview: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const userdata = useSelector((state: RootState)=>
         state.userInfo
     )
+    const navigate = useNavigate()
     const emailref = useRef(null)
     const password = useRef(null)
     const [user,setuser]=useState({
@@ -17,15 +20,13 @@ const Loginview: React.FC = () => {
         password:''
     })
     const handlerLogin = async()=>{
-        dispatch(login(user))
-        if(userdata.logined){
-            dispatch(getMe())
-            
-        }
-
-       
-       
+        dispatch( await fetchlogin(user))        
     }
+    useEffect(()=>{
+        if(userdata.logined){
+            navigate('/')
+        }
+    },[userdata.logined])
     const onchange=(e:ChangeEvent)=>{
         const target = e.target as HTMLInputElement 
         switch(target.name){

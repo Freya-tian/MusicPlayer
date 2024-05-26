@@ -1,12 +1,13 @@
 import { HttpClient } from "../Common/HttpClient";
-
+import {getToken} from '../Common/token-manager'
 // import { getToken } from './token-manager'
 import httpProvider from '../Common/FetchProvider'
 
-const BASE_URL = 'http://localhost:3000'
+// const BASE_URL = 'http://localhost:3000'
 
 
 class Userservices  extends HttpClient {
+	
 	async tRegister(data) {
 		try {
 			
@@ -40,6 +41,6 @@ class Userservices  extends HttpClient {
 
 export default new Userservices({
 	httpProvider,
-	baseURL: BASE_URL,
-	// getToken,
+	baseURL: 'http://localhost:3000',
+	getToken
 })

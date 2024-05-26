@@ -1,4 +1,4 @@
-.playerContainer{
+.playerContainer {
     width: 100vw;
     height: 110px;
     position: fixed;
@@ -6,122 +6,141 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:rgba($color: #D27B7B, $alpha: 1);
+    background-color: rgba($color: #D27B7B, $alpha: 1);
     z-index: 10;
-    .Container{
-       
+
+    .Container {
+
         display: flex;
-       justify-content: space-between;
-        .allbumContainer{
+        justify-content: space-between;
+
+        .allbumContainer {
             width: 110px;
             height: 110px;
-            img{
+
+            img {
                 width: 110px;
-                height: 110px; 
+                height: 110px;
                 object-fit: cover;
             }
         }
-        .playerControls{
-            display: flex;
-            width: 200px;
-            justify-content: space-between;
-            align-items: center;
-            .lastControl,.stopcontrol,.playcontrol,.nextControl{
-                width: 48px;
-                height: 48px;
-                border-radius: 50%;
-                background-color: #D27B7B;
-                cursor: pointer;
-                transition:all 0.2s ease-in-out;
-                img{
-                    width: 48px;
-                    height: 48px; 
-                }
-                &:hover{
-                    background-color: #E4A0A0;
-                }
-            }
-           
-        }
-        .musicPlayInfo{
+
+        .musicPlayInfo {
             display: grid;
-            grid-template-rows: 1fr 1fr ;
+            grid-template-rows: 1fr 1fr;
             width: 500px;
             align-items: center;
-            .musicinfo{
+
+            .musicinfo {
                 display: grid;
-                grid-template-columns: 1fr  1fr;
+                grid-template-columns: 1fr 1fr;
                 font-family: 'Courier New', Courier, monospace;
-                    font-size: 20px;
-                .musicAndSinger{
-                    text-align:start;
-                    
-                    .musicName{                      
+                font-size: 20px;
+
+                .musicAndSinger {
+                    text-align: start;
+
+                    .musicName {
                         color: black;
-                        &::after{
+
+                        &::after {
                             width: 30px;
                             height: 0px;
                             content: ' ';
                         }
                     }
-                    .singerName{
+
+                    .singerName {
                         font-size: 15px;
                         color: #FCFCFC;
                     }
-                } 
-                .playingTime{
+                }
+
+                .playingTime {
                     text-align: end;
-                }  
+                }
 
             }
-            .playaxis{
+
+            .playaxis {
                 width: 100%;
                 height: 10px;
                 background-color: rgba($color: #fff, $alpha: 1);
-                border-radius:10px ;
+                border-radius: 10px;
                 cursor: pointer;
-                .progess{
+
+                .progess {
                     width: 10%;
                     height: 10px;
                     background-color: rgba($color: #fff, $alpha: 1);
-                    border-radius:10px ;
+                    border-radius: 10px;
 
                 }
             }
         }
-        .voice{
+
+        .voice {
             width: 184px;
             display: grid;
-            grid-template-columns: 1fr 4fr ;
+            grid-template-columns: 1fr 4fr;
             align-items: center;
-            .voiceIcon{
+
+            .voiceIcon {
                 width: 28px;
                 height: 28px;
                 background-image: url('../../assets/voice.svg');
                 background-position: center;
                 background-size: cover;
-                transition:all 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
                 cursor: pointer;
-                &:hover{
+
+                &:hover {
                     background-image: url('../../assets/voicehover.svg');
                 }
             }
-            .voiceAxis{
+
+            .voiceAxis {
                 width: 100%;
                 height: 10px;
-               
+
                 background-color: rgba($color: #D27B7B, $alpha: 0.2);
-                border-radius:10px ;
+                border-radius: 10px;
                 cursor: pointer;
-                .progess{
+
+                .progess {
                     width: 10%;
                     height: 10px;
                     background-color: rgba($color: #D27B7B, $alpha: 1);
-                    border-radius:10px ;
+                    border-radius: 10px;
 
                 }
             }
         }
+
+        .colletcion {
+            display: flex;
+            align-items: center;
+            .collections {
+                width: 28px;
+                height: 28px;
+                background-image: url('../../assets/collectionsvg.svg');
+                background-position: center;
+                background-size: cover;
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+                line-height: 110px;
+            }
+            .collectioned {
+                width: 28px;
+                height: 28px;
+                background-image: url('../../assets/collectioned.svg');
+                background-position: center;
+                background-size: cover;
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+                line-height: 110px;
+            }
+        }
     }
-    
+
 }

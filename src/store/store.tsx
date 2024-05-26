@@ -1,11 +1,13 @@
 import {configureStore} from '@reduxjs/toolkit';
 import playingMusicReducer from './PlayingMusic/PlayingMusic.ts';
 import  userInfo from './Userstore/Userstore.ts';
+import PlayList from './PlayList/PlayList.ts'
 export const store = configureStore({
     reducer:{
         
         playingMusicInfomation:playingMusicReducer,
-        userInfo:userInfo
+        userInfo:userInfo,
+        PlayList:PlayList
     }
 
 })

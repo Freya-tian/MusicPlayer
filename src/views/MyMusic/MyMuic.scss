@@ -1,0 +1,51 @@
+footer{
+    display: none;
+}
+.MyMusic{
+    height: calc(100vh - 60px - 110px);
+    padding-top: 100px;
+    width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    .nva{
+        width: 250px;
+        height: 350px;
+        background-color:#d27b7b ;
+        border-radius: 15px;
+        padding: 20px 10px;
+        li{
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            &:hover{
+                color: aliceblue;
+            }
+        }
+        .visted{
+            color: aliceblue;
+        }
+    }
+    .ListContainer{
+        width: 800px;
+        height: calc(100vh - 100px - 150px);
+        background-color: rgba(210, 123, 123, 0.2);
+        padding: 30px 10px;
+        // overflow-y: scroll;
+        table{
+            width: 100%;
+            tr{
+                text-align: center;
+                height: 15px;
+                line-height: 50px;
+                cursor: pointer;
+            }
+        }
+    }
+}

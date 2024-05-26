@@ -18,6 +18,19 @@ class RecommendList extends HttpClient {
 			throw Error(e)
 		}
 	}
+
+	async getMusicList(ID) {
+		try {
+			return this.get(`/recommend/?listId =${ID} `,{
+				headers:{
+					'Content-Type': 'application/json',
+				}
+			})
+		} catch (e) {
+			throw Error(e)
+		}
+	}
+
 	
 }
 

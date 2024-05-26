@@ -1,30 +1,36 @@
-
+import {getToken} from './token-manager';
 export class HttpClient  {
     constructor(options){
-        if(options.BaseURL) {throw Error('[hTTPcLIENT]:BaseURL is empty!')}
+        if(!options.baseURL) {console.log(options.baseURL);}
         this.httpProvider = options.httpProvider;
         this.baseURL = options.baseURL
+		
     }
+	getToken(){
+		return getToken()
+	}
     buildRequest (options = {}) {
-		// const token = this.getToken()
+		const token = this.getToken()
 		// Добавляем хедеры
 		let headers = {
 			// 'Content-Type': 'application/json',
 			// 'application/json'
 			// 'Charset':'utf-8'
-			// Authorization: token ? `Bearer ${token}` : '',
+			Authorization: token ? `Bearer ${token}` : '',
 		}
 		if (options.headers) {
 			headers = {
 				...headers,
 				...options.headers
 			}
+			
 		}
 		
 		return {
 			baseURL: this.baseURL,
-			headers,
+			
 			...options,
+			headers,
 		}
 	}
     checkPath(path) {
@@ -39,6 +45,7 @@ export class HttpClient  {
 	}
 	
 	async post (path, options) {
+		console.log(path);
 		this.checkPath(path)
 		return this.httpProvider.post(path, this.buildRequest(options))
 	}

@@ -1,3 +1,5 @@
+export const URL = 'http://localhost:3000/'
+
 /**
  *  格式化时间的函数
  * */
