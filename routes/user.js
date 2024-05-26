@@ -19,12 +19,9 @@ const findUser = async (email = null) => {
 const upload = multer({
     storage: multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, 'data/Avatar/')
+            cb(null, 'public/data/Avatar/')
         },
-        filename: function (req, file, cb) {
-            // fieldname是表单的name值，也就是我们设定的“logo”，
-            // originalname是文件上传时的名字，可以根据它获取后缀，
-            // encoding，mimetype 我就不详细介绍了，可以自行输出查看。
+        filename: function (req, file, cb) {           
             const { fieldname, originalname, encoding, mimetype } = file
             const after = originalname.split('.')[1] ? '.' + originalname.split('.')[1] : '.jpg'
             let id = uuidv4()
@@ -106,8 +103,7 @@ user.post('/login', (req, res) => {
             const { User_ID, Email,User_Name ,Password,Avatar} = data[0]
             const passwordmd5 = password.passwordhandler(datas.password)
             let token = ''
-            console.log(passwordmd5);
-            console.log();
+
             if (passwordmd5 === Password) {
                 token = jwt.sign({ User_ID, Email }, PRIVATE_KEY, {
                     //24h后失效

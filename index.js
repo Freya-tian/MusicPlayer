@@ -4,10 +4,12 @@ const app = express()
 const singer  = require('./routes/singer')
 const rank = require('./routes/rankList')
 const historyList = require('./routes/historyList')
-
+const search = require('./routes/search')
 const recommend = require('./routes/recommend')
+const collection = require('./routes/Collection')
 const expressSwagger  = require('express-swagger-generator')(app);
 const user = require('./routes/user')
+const comment = require('./routes/comment')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
@@ -26,11 +28,16 @@ app.use((req,res,next)=>{
     res.header('Access-Control-Allow-Headers', 'Content-Type')
     next()
 })
+app.use(express.static('public'))
 app.use('/singer',singer )
 app.use('/rank',rank )
 app.use('/recommend',recommend )
 app.use('/user',user )
 app.use('/historyList',historyList )
+app.use('/collection',collection )
+app.use('/search',search )
+app.use('/comment',comment)
+
 let options = {
     swaggerDefinition: {
         info: {
